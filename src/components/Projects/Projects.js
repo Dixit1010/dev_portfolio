@@ -37,7 +37,7 @@ function Projects() {
               imgPath={bitsOfCode}
               isBlog={false}
               title="JOB-ZEE"
-              description="A full stack job portal application build with MERN stack. The application allows users to search for jobs, post jobs, and apply for jobs. It also has a feature for employers to post jobs and manage their job listings."
+              description="JOB-ZEE is a full-stack job portal application built with the MERN stack (MongoDB, Express.js, React, Node.js). It allows users to search for jobs, post jobs, and apply for jobs. Job seekers can upload their resumes, making it easier for employers to review their qualifications. Employers can post job listings and manage them efficiently. This application streamlines the job search and recruitment process, providing a user-friendly interface for both job seekers and employers."
               ghLink="https://github.com/Dixit1010/JOB_ZEE_BACKEND.git"
               demoLink="https://job-ezee.netlify.app/"
             />
