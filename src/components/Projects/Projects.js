@@ -28,7 +28,7 @@ function Projects() {
               title="Chat App"
               description="A full-stack chat application built with the MERN stack. The application enables users to send and receive real-time messages, create group chats, and manage their conversations. It also includes features for user authentication, message history, and multimedia sharing to enhance the chat experience."
              ghLink="https://github.com/Dixit1010/chat-app_full_stack"
-              demoLink="https://chatify-49.web.app/"
+              demoLink="https://chat-app-full-stack-h5ys.onrender.com/login"
             />
           </Col>
 
@@ -42,7 +42,16 @@ function Projects() {
               demoLink="https://job-ezee.netlify.app/"
             />
           </Col>
-
+ <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={suicide}
+              isBlog={false}
+              title="Sorting Algo Visualizer"
+              description="A sorting visualizer that brings algorithms to life! This interactive tool visually demonstrates sorting techniques like Bubble Sort, Merge Sort, and Quick Sort in real time, helping users understand their step-by-step operations. Perfect for learning, debugging, and exploring algorithm efficiency."
+              ghLink="https://github.com/Dixit1010/sorting-visualizer-.git"
+               demoLink="https://sorting-visualizzeer.netlify.app/" 
+            />
+          </Col>
           {/* <Col md={4} className="project-card">
             <ProjectCard
               imgPath={editor}
@@ -100,16 +109,7 @@ function Projects() {
           </Col> */}
 
           
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={suicide}
-              isBlog={false}
-              title="Sorting Algo Visualizer"
-              description="A sorting visualizer that brings algorithms to life! This interactive tool visually demonstrates sorting techniques like Bubble Sort, Merge Sort, and Quick Sort in real time, helping users understand their step-by-step operations. Perfect for learning, debugging, and exploring algorithm efficiency."
-              ghLink="https://github.com/Dixit1010/sorting-visualizer-.git"
-               demoLink="https://sorting-visualizzeer.netlify.app/" 
-            />
-          </Col>
+         
         </Row>
       </Container>
     </Container>
