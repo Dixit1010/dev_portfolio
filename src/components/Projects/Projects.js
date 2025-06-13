@@ -21,16 +21,16 @@ function Projects() {
           Here are a few projects I've worked on recently.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          {/* <Col md={4} className="project-card">
+          <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={chatify}
+              imgPath={bitsOfCode}
               isBlog={false}
-              title="Chatify"
-              description="Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages."
-             ghLink="https://github.com/soumyajit4419/Chatify"
+              title="Chat App"
+              description="A full-stack chat application built with the MERN stack. The application enables users to send and receive real-time messages, create group chats, and manage their conversations. It also includes features for user authentication, message history, and multimedia sharing to enhance the chat experience."
+             ghLink="https://github.com/Dixit1010/chat-app_full_stack"
               demoLink="https://chatify-49.web.app/"
             />
-          </Col> */}
+          </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
@@ -105,7 +105,7 @@ function Projects() {
               imgPath={suicide}
               isBlog={false}
               title="Sorting Algo Visualizer"
-              description="This project is made with intention for visualizing various sorting algos."
+              description="A sorting visualizer that brings algorithms to life! This interactive tool visually demonstrates sorting techniques like Bubble Sort, Merge Sort, and Quick Sort in real time, helping users understand their step-by-step operations. Perfect for learning, debugging, and exploring algorithm efficiency."
               ghLink="https://github.com/Dixit1010/sorting-visualizer-.git"
                demoLink="https://sorting-visualizzeer.netlify.app/" 
             />
