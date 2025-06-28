@@ -144,7 +144,7 @@ function AboutCard() {
                 onMouseOver={(e) => (e.currentTarget.style.color = linkHoverStyle.color)}
                 onMouseOut={(e) => (e.currentTarget.style.color = linkStyle.color)}
               >
-                CodeChef (3★ | 1300+ rating)
+                CodeChef (3★ | 1600+ rating)
               </a>
             </li>
             <li className="about-activity">
