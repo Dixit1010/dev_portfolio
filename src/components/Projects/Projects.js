@@ -10,7 +10,7 @@ import trade from "../../Assets/Projects/Screenshot 2025-08-04 152707.png"
 // import editor from "../../Assets/Projects/codeEditor.png";
 // import chatify from "../../Assets/Projects/chatify.png";
 import suicide from "../../Assets/Projects/suicide.png";
-import bitsOfCode from "../../Assets/Projects/blog.png";
+//import bitsOfCode from "../../Assets/Projects/blog.png";
 import emotion from "../../Assets/Projects/emotion.png";
 function Projects() {
   return (
