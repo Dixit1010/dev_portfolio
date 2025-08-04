@@ -3,7 +3,10 @@ import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 import leaf from "../../Assets/Projects/leaf.png";
-
+import travel from "../../Assets/Projects/Screenshot 2025-08-04 150741.png"
+import job from "../../Assets/Projects/Screenshot 2025-08-04 151113.png"
+import chat from "../../Assets/Projects/Screenshot 2025-08-04 151437.png"
+import trade from "../../Assets/Projects/Screenshot 2025-08-04 152707.png"
 // import editor from "../../Assets/Projects/codeEditor.png";
 // import chatify from "../../Assets/Projects/chatify.png";
 import suicide from "../../Assets/Projects/suicide.png";
@@ -23,10 +26,10 @@ function Projects() {
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={bitsOfCode}
+              imgPath={chat}
               isBlog={false}
               title="Chat App"
-              description="A full-stack chat application built with the MERN stack. The application enables users to send and receive real-time messages, create group chats, and manage their conversations. It also includes features for user authentication, message history, and multimedia sharing to enhance the chat experience."
+              description="A full-stack chat application built with the MERN stack.The Chat App is a real-time messaging platform built to facilitate seamless user communication with features like authenticated user sessions, live message updates, and conversation history. It leverages WebSockets (or Firebase Realtime/Firestore, depending on implementation) for instant bidirectional data flow, ensuring messages appear without refresh. "
              ghLink="https://github.com/Dixit1010/chat-app_full_stack"
               demoLink="https://chat-app-full-stack-h5ys.onrender.com/login"
             />
@@ -34,7 +37,7 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={bitsOfCode}
+              imgPath={job}
               isBlog={false}
               title="JOB-ZEE"
               description="JOB-ZEE is a full-stack job portal application built with the MERN stack (MongoDB, Express.js, React, Node.js). It allows users to search for jobs, post jobs, and apply for jobs. Job seekers can upload their resumes, making it easier for employers to review their qualifications. Employers can post job listings and manage them efficiently. This application streamlines the job search and recruitment process, providing a user-friendly interface for both job seekers and employers."
@@ -42,6 +45,18 @@ function Projects() {
               demoLink="https://job-ezee.netlify.app/"
             />
           </Col>
+
+<Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={travel}
+              isBlog={false}
+              title="TravPlan-AI travel planner"
+              description="TravPlan is an AI-powered trip planning web application built using React, Tailwind CSS, and Firebase. It allows users to generate personalized travel itineraries based on budget, travel preferences, and companions. The platform features interactive animations powered by Framer Motion, real-time hotel recommendations with direct Google Maps integration, and a clean, responsive design optimized for mobile and desktop."
+             ghLink="https://github.com/Dixit1010/Trav_Plan.git"
+              demoLink="https://travplann.netlify.app/"
+            />
+          </Col>
+
  <Col md={4} className="project-card">
             <ProjectCard
               imgPath={suicide}
@@ -52,16 +67,19 @@ function Projects() {
                demoLink="https://sorting-visualizzeer.netlify.app/" 
             />
           </Col>
-          {/* <Col md={4} className="project-card">
+          
+
+
+          <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={editor}
+              imgPath={trade}
               isBlog={false}
-              title="Editor.io"
-              description="Online code and markdown editor build with react.js. Online Editor which supports html, css, and js code with instant view of website. Online markdown editor for building README file which supports GFM, Custom Html tags with toolbar and instant preview.Both the editor supports auto save of work using Local Storage"
-              ghLink="https://github.com/soumyajit4419/Editor.io"
-              demoLink="https://editor.soumya-jit.tech/"              
+              title="TradeBook"
+              description="Quant TradeBook is a Next.js-powered stock trading journal and analytics platform that enables traders to log and analyze their trades in real-time. Integrated with market data APIs, it fetches live stock information and visualizes performance trends through interactive charts and graphs. The platform provides trade categorization, filtering, and profitability insights to help traders make data-driven decisions."
+             ghLink="https://github.com/Dixit1010/Quant_TradeBook.git"
+              demoLink="https://drive.google.com/file/d/11VOTnOQxjevLqFS0JxMz4_NV5F7k0BYg/view?usp=sharing"
             />
-          </Col> */}
+          </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
@@ -84,6 +102,8 @@ function Projects() {
               // demoLink="https://plant49-ai.herokuapp.com/"
             />
           </Col>
+
+
 
           {/* <Col md={4} className="project-card">
             <ProjectCard
