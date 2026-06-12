@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   },
 };
 
+import { LenisProvider } from "@/providers/LenisProvider";
+import CustomCursor from "@/components/CustomCursor";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,7 +29,10 @@ export default function RootLayout({
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} bg-background text-text-primary antialiased`}
       >
-        {children}
+        <LenisProvider>
+          <CustomCursor />
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );
