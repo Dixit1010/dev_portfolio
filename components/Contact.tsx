@@ -53,12 +53,12 @@ export default function Contact() {
       <SectionLabel number="05">Contact</SectionLabel>
 
       <div ref={headlineRef} className="mt-6 flex flex-col items-center gap-2">
-        <h2 className="text-6xl md:text-8xl font-light tracking-tight text-white flex flex-wrap justify-center gap-[0.2em]">
+        <h2 className="text-4xl md:text-8xl font-light tracking-tight text-white flex flex-wrap justify-center gap-[0.2em]">
           {"Let's build".split(" ").map((word, i) => (
             <span key={i} className="word inline-block">{word}</span>
           ))}
         </h2>
-        <h2 className="text-6xl md:text-8xl font-light tracking-tight text-text-secondary flex flex-wrap justify-center gap-[0.2em]">
+        <h2 className="text-4xl md:text-8xl font-light tracking-tight text-text-secondary flex flex-wrap justify-center gap-[0.2em]">
           {"something together.".split(" ").map((word, i) => (
             <span key={i} className="word inline-block">{word}</span>
           ))}
@@ -68,7 +68,7 @@ export default function Contact() {
       <div className="mt-12 relative flex items-center gap-4 group">
         <a 
           href={`mailto:${personalInfo.email}`}
-          className="text-xl md:text-2xl font-mono text-text-muted hover:text-white transition-colors relative"
+          className="text-lg md:text-2xl font-mono text-text-muted hover:text-white transition-colors relative"
           data-cursor="text"
         >
           {personalInfo.email}
@@ -106,7 +106,7 @@ export default function Contact() {
           <a 
             href={personalInfo.github} 
             target="_blank"
-            className="border border-border rounded-full p-4 flex items-center justify-center hover:bg-white/5 hover:border-white/20 transition-colors text-text-muted hover:text-white"
+            className="border border-border rounded-full p-5 md:p-4 flex items-center justify-center hover:bg-white/5 hover:border-white/20 transition-colors text-text-muted hover:text-white"
             data-cursor="hover"
             aria-label="GitHub"
           >
@@ -117,7 +117,7 @@ export default function Contact() {
           <a 
             href={personalInfo.linkedin} 
             target="_blank"
-            className="border border-border rounded-full p-4 flex items-center justify-center hover:bg-white/5 hover:border-white/20 transition-colors text-text-muted hover:text-white"
+            className="border border-border rounded-full p-5 md:p-4 flex items-center justify-center hover:bg-white/5 hover:border-white/20 transition-colors text-text-muted hover:text-white"
             data-cursor="hover"
             aria-label="LinkedIn"
           >

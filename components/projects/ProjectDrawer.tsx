@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Project } from "@/data/content";
 import Badge from "../ui/Badge";
+import { useLenisContext } from "@/providers/LenisProvider";
 
 interface ProjectDrawerProps {
   project: Project | null;
@@ -11,6 +13,22 @@ interface ProjectDrawerProps {
 }
 
 export default function ProjectDrawer({ project, isOpen, onClose }: ProjectDrawerProps) {
+  const lenis = useLenisContext();
+
+  useEffect(() => {
+    if (isOpen) {
+      lenis?.stop();
+      document.body.style.overflow = "hidden";
+    } else {
+      lenis?.start();
+      document.body.style.overflow = "";
+    }
+    return () => {
+      lenis?.start();
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, lenis]);
+
   return (
     <AnimatePresence>
       {isOpen && project && (
@@ -27,7 +45,7 @@ export default function ProjectDrawer({ project, isOpen, onClose }: ProjectDrawe
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed bottom-0 left-0 right-0 z-[110] h-[85vh] bg-[#111] border-t border-border rounded-t-3xl overflow-y-auto px-8 py-10"
+            className="fixed bottom-0 left-0 right-0 z-[110] h-[92vh] md:h-[85vh] bg-[#111] border-t border-border rounded-t-3xl overflow-y-auto px-6 md:px-8 py-10"
           >
             <div className="max-w-4xl mx-auto relative">
               <button 

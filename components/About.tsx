@@ -118,7 +118,7 @@ export default function About() {
           
           <div 
             ref={terminalRef}
-            className="bg-[#0d0d0d] border border-border rounded-2xl overflow-hidden min-h-[400px] md:min-h-[520px] relative shadow-2xl"
+            className="bg-[#0d0d0d] border border-border rounded-2xl overflow-hidden min-h-[350px] md:min-h-[520px] relative shadow-2xl"
           >
             {/* TERMINAL TITLEBAR */}
             <div className="bg-[#161616] px-4 py-3 flex items-center border-b border-border relative z-10">
@@ -133,7 +133,7 @@ export default function About() {
             </div>
 
             {/* TERMINAL BODY */}
-            <div className="p-6 font-mono text-sm leading-7 text-[#d4d4d4] relative z-10 overflow-x-auto">
+            <div className="p-4 md:p-6 font-mono text-xs md:text-sm leading-6 md:leading-7 text-[#d4d4d4] relative z-10 overflow-x-auto">
               {TERMINAL_LINES.map((line, i) => (
                 <div key={i} className="term-line opacity-0 flex whitespace-pre-wrap">
                   {line.type === "prompt" && (

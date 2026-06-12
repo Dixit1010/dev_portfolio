@@ -16,8 +16,8 @@ export default function CustomCursor() {
   const ringY = useSpring(cursorY, { stiffness: 300, damping: 40 });
 
   useEffect(() => {
-    // Only enable custom cursor on non-touch devices
-    if (window.innerWidth > 768 && window.matchMedia("(pointer: fine)").matches) {
+    const isTouchDevice = 'ontouchstart' in window;
+    if (!isTouchDevice && window.innerWidth > 768 && window.matchMedia("(pointer: fine)").matches) {
       setIsDesktop(true);
     }
 

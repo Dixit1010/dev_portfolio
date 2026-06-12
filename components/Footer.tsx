@@ -9,7 +9,7 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} &middot; Noida, India
         </div>
         <div className="font-mono text-xs text-text-muted">
-          Built with Next.js &middot; Designed with intent
+           &middot; Designed with intent
         </div>
       </div>
     </footer>

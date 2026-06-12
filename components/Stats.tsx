@@ -25,7 +25,7 @@ function StatCounter({ value, label }: { value: string, label: string }) {
 
   return (
     <div ref={ref} className="flex flex-col items-center md:items-start text-center md:text-left">
-      <motion.div className="text-5xl md:text-6xl font-light tracking-tight text-white">
+      <motion.div className="text-4xl md:text-6xl font-light tracking-tight text-white">
         {rounded}
       </motion.div>
       <div className="text-text-muted text-sm font-mono mt-2 tracking-wider uppercase">

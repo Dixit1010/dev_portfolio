@@ -107,7 +107,7 @@ export default function ProjectCard({ project, index, onClick }: ProjectCardProp
       whileHover={{ y: -4, scale: 1.01 }}
       transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 20 }}
       onClick={() => onClick(project)}
-      className="w-[85vw] md:w-[60vw] max-w-[800px] h-[65vh] md:h-[70vh] flex-shrink-0 bg-surface border border-border hover:border-white/20 transition-colors duration-300 rounded-3xl overflow-hidden cursor-pointer flex flex-col md:flex-row group"
+      className="w-full md:w-[60vw] max-w-[800px] h-auto md:h-[70vh] flex-shrink-0 bg-surface border border-border hover:border-white/20 transition-colors duration-300 rounded-3xl overflow-hidden cursor-pointer flex flex-col md:flex-row group"
       data-cursor="hover"
     >
       {/* Left Panel */}

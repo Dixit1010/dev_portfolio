@@ -93,27 +93,29 @@ export default function Hero() {
     >
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/[0.03] via-background to-background md:hidden" />
 
-      <HeroScene />
+      <div className="hidden md:block absolute inset-0 z-0 pointer-events-none">
+        <HeroScene />
+      </div>
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 flex flex-col justify-center h-full">
         
-        <div className="flex items-center gap-4 mb-8 md:mb-12 mt-20 md:mt-0">
+        <div className="flex items-center gap-4 mb-8 md:mb-12 mt-20 md:mt-0 justify-center md:justify-start">
           <Badge variant="mono">Available for opportunities</Badge>
-          <div className="w-1 h-1 rounded-full bg-border-2" />
-          <span className="font-mono text-xs text-text-muted">Noida, India</span>
+          <div className="w-1 h-1 rounded-full bg-border-2 hidden md:block" />
+          <span className="font-mono text-xs text-text-muted hidden md:inline-block">Noida, India</span>
         </div>
 
-        <div className="flex flex-col relative z-20">
+        <div className="flex flex-col relative z-20 text-center md:text-left">
           <h1 
             ref={headline1Ref}
-            className="text-5xl md:text-7xl lg:text-9xl font-light tracking-tight text-white mb-2"
+            className="text-4xl md:text-7xl lg:text-9xl font-light tracking-tight text-white mb-2"
             style={{ perspective: "1000px" }}
           >
             {renderSplitText("Dixit Kumar")}
           </h1>
           <h2 
             ref={headline2Ref}
-            className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-text-secondary"
+            className="text-3xl md:text-6xl lg:text-7xl font-light tracking-tight text-text-secondary"
             style={{ perspective: "1000px" }}
           >
             {renderSplitText("Software Engineer")}
@@ -122,12 +124,12 @@ export default function Hero() {
 
         <p 
           ref={sublineRef}
-          className="max-w-lg text-text-muted text-base md:text-lg leading-relaxed mt-6 opacity-0"
+          className="w-full max-w-full md:max-w-lg text-text-muted text-base md:text-lg leading-relaxed mt-6 opacity-0 text-center md:text-left mx-auto md:mx-0"
         >
           Building reliable systems at scale. From embedded firmware to AI-powered web.
         </p>
 
-        <div className="h-6 mt-4 relative overflow-hidden">
+        <div className="h-6 mt-4 relative overflow-hidden flex justify-center md:justify-start">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentRoleIndex}
@@ -135,31 +137,31 @@ export default function Hero() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="absolute left-0 font-mono text-sm text-text-secondary"
+              className="absolute font-mono text-sm text-text-secondary"
             >
               {ROLES[currentRoleIndex]}
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div ref={ctaRef} className="mt-10 flex flex-wrap gap-4 relative z-20">
-          <div className="opacity-0">
+        <div ref={ctaRef} className="mt-10 flex flex-col md:flex-row gap-3 md:gap-4 relative z-20 w-full max-w-xs md:max-w-none mx-auto md:mx-0">
+          <div className="opacity-0 w-full md:w-auto">
             <MagneticButton strength={0.2}>
               <button 
                 onClick={scrollToWork}
-                className="bg-white text-black px-6 py-3 rounded-full text-sm font-medium hover:bg-white/90 transition-colors"
+                className="w-full bg-white text-black px-6 py-3 rounded-full text-sm font-medium hover:bg-white/90 transition-colors"
                 data-cursor="hover"
               >
                 View Work ↓
               </button>
             </MagneticButton>
           </div>
-          <div className="opacity-0">
+          <div className="opacity-0 w-full md:w-auto">
             <MagneticButton strength={0.2}>
               <a 
                 href="/resume.pdf" 
                 target="_blank"
-                className="block border border-border text-text-secondary px-6 py-3 rounded-full text-sm hover:bg-white/5 hover:text-white transition-colors"
+                className="w-full block text-center border border-border text-text-secondary px-6 py-3 rounded-full text-sm hover:bg-white/5 hover:text-white transition-colors"
                 data-cursor="hover"
               >
                 Resume

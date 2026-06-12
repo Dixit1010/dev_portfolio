@@ -33,11 +33,12 @@ export default function Timeline() {
       );
     }
 
+    const isMobile = window.innerWidth < 768;
     const entries = document.querySelectorAll(".timeline-entry");
     entries.forEach((entry, i) => {
       const isEven = i % 2 === 0;
       gsap.fromTo(entry,
-        { opacity: 0, x: isEven ? -40 : 40 },
+        { opacity: 0, x: isMobile ? -20 : (isEven ? -40 : 40) },
         {
           opacity: 1,
           x: 0,
@@ -55,7 +56,7 @@ export default function Timeline() {
   return (
     <section id="timeline" className="py-32 px-6 md:px-12 max-w-5xl mx-auto border-t border-border">
       <SectionLabel number="04">Experience</SectionLabel>
-      <h2 className="text-5xl font-light tracking-tight text-white mt-6 mb-24">
+      <h2 className="text-5xl font-light tracking-tight text-white mt-6 mb-16 md:mb-24">
         Career
       </h2>
 
@@ -71,7 +72,7 @@ export default function Timeline() {
           return (
             <div 
               key={i} 
-              className={`timeline-entry flex flex-col md:flex-row items-start gap-8 mb-24 relative ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+              className={`timeline-entry flex flex-col md:flex-row items-start gap-8 mb-16 md:mb-24 relative ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} ml-4 md:ml-0 border-l-2 border-border md:border-l-0 pl-6 md:pl-0`}
             >
               {/* CENTER DOT */}
               <div className="hidden md:block absolute left-1/2 -translate-x-1/2 mt-8 z-10">
@@ -114,7 +115,7 @@ export default function Timeline() {
         })}
 
         {/* EDUCATION ENTRY */}
-        <div className="timeline-entry flex justify-center relative mt-12">
+        <div className="timeline-entry flex justify-center relative mt-12 ml-4 md:ml-0 border-l-2 border-border md:border-l-0 pl-6 md:pl-0">
           <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 z-10">
             <div className="w-3 h-3 rounded-full bg-border border-2 border-background" />
           </div>

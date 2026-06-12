@@ -54,7 +54,7 @@ export default function Skills() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.02 }}
+                  transition={{ delay: i * 0.04 }}
                   className="font-mono text-xs px-3 py-1.5 rounded-full border border-border bg-surface"
                   style={{ 
                     color: s.category === 'web' ? '#60a5fa' : 
@@ -70,30 +70,30 @@ export default function Skills() {
         </div>
 
         {/* Legend */}
-        <div className="w-full md:w-1/3 flex flex-col gap-6">
-          <div className="flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
-            <div className="w-3 h-3 rounded-full bg-[#60a5fa]" />
+        <div className="w-full md:w-1/3 flex flex-row md:flex-col overflow-x-auto md:overflow-visible gap-4 md:gap-6 pb-4 md:pb-0 snap-x hide-scrollbar">
+          <div className="flex-shrink-0 min-w-[220px] md:min-w-0 snap-center flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
+            <div className="w-3 h-3 rounded-full bg-[#60a5fa] flex-shrink-0" />
             <div>
               <div className="text-white text-sm">Web & Full Stack</div>
               <div className="text-text-muted text-xs font-mono mt-1">{skills.web.length} Skills</div>
             </div>
           </div>
-          <div className="flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
-            <div className="w-3 h-3 rounded-full bg-[#a78bfa]" />
+          <div className="flex-shrink-0 min-w-[220px] md:min-w-0 snap-center flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
+            <div className="w-3 h-3 rounded-full bg-[#a78bfa] flex-shrink-0" />
             <div>
               <div className="text-white text-sm">Low Latency Systems</div>
               <div className="text-text-muted text-xs font-mono mt-1">{skills.systems.length} Skills</div>
             </div>
           </div>
-          <div className="flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
-            <div className="w-3 h-3 rounded-full bg-[#34d399]" />
+          <div className="flex-shrink-0 min-w-[220px] md:min-w-0 snap-center flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
+            <div className="w-3 h-3 rounded-full bg-[#34d399] flex-shrink-0" />
             <div>
               <div className="text-white text-sm">Machine Learning</div>
               <div className="text-text-muted text-xs font-mono mt-1">{skills.ml.length} Skills</div>
             </div>
           </div>
-          <div className="flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
-            <div className="w-3 h-3 rounded-full bg-[#fb923c]" />
+          <div className="flex-shrink-0 min-w-[220px] md:min-w-0 snap-center flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
+            <div className="w-3 h-3 rounded-full bg-[#fb923c] flex-shrink-0" />
             <div>
               <div className="text-white text-sm">Tools & Cloud</div>
               <div className="text-text-muted text-xs font-mono mt-1">{skills.tools.length} Skills</div>
