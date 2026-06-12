@@ -27,8 +27,73 @@ export default function Navigation() {
       setScrolled(window.scrollY > 100);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // GSAP refresh on resize
+    let resizeTimer: NodeJS.Timeout;
+    const observer = new ResizeObserver(() => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
+          ScrollTrigger.refresh();
+        });
+      }, 200);
+    });
+    observer.observe(document.body);
+
+    const handleResize = () => {
+      if (lenis) lenis.resize();
+    };
+    window.addEventListener("resize", handleResize);
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [lenis]);
+
+  useEffect(() => {
+    import("gsap").then(({ gsap }) => {
+      import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
+        gsap.registerPlugin(ScrollTrigger);
+        setTimeout(() => {
+          const headings = document.querySelectorAll("h2");
+          headings.forEach((h2) => {
+            if (h2.querySelector('.word') || h2.classList.contains('animated-h2')) return;
+            h2.classList.add('animated-h2'); // Prevent double animation
+            gsap.fromTo(h2, 
+              { opacity: 0, y: 30 },
+              { 
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8, 
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: h2,
+                  start: "top 85%"
+                }
+              }
+            );
+          });
+        }, 500); // Wait for DOM to settle
+      });
+    });
   }, []);
+
+  useEffect(() => {
+    if (!lenis) return;
+    if (menuOpen) {
+      lenis.stop();
+    } else {
+      lenis.start();
+    }
+  }, [menuOpen, lenis]);
 
   const handleNavClick = (id: string) => {
     setMenuOpen(false);
