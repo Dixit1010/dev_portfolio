@@ -48,17 +48,17 @@ export default function Contact() {
     <section 
       id="contact" 
       ref={containerRef}
-      className="min-h-[70vh] flex flex-col items-center justify-center py-32 px-6 text-center border-t border-border relative z-10"
+      className="min-h-[70vh] flex flex-col items-center justify-center py-16 md:py-32 px-6 text-center border-t border-border relative z-10"
     >
       <SectionLabel number="05">Contact</SectionLabel>
 
       <div ref={headlineRef} className="mt-6 flex flex-col items-center gap-2">
-        <h2 className="text-4xl md:text-8xl font-light tracking-tight text-white flex flex-wrap justify-center gap-[0.2em]">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white flex flex-wrap justify-center gap-[0.2em]">
           {"Let's build".split(" ").map((word, i) => (
             <span key={i} className="word inline-block">{word}</span>
           ))}
         </h2>
-        <h2 className="text-4xl md:text-8xl font-light tracking-tight text-text-secondary flex flex-wrap justify-center gap-[0.2em]">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-text-secondary flex flex-wrap justify-center gap-[0.2em]">
           {"something together.".split(" ").map((word, i) => (
             <span key={i} className="word inline-block">{word}</span>
           ))}
@@ -68,7 +68,7 @@ export default function Contact() {
       <div className="mt-12 relative flex items-center gap-4 group">
         <a 
           href={`mailto:${personalInfo.email}`}
-          className="text-lg md:text-2xl font-mono text-text-muted hover:text-white transition-colors relative"
+          className="text-sm sm:text-lg md:text-2xl font-mono text-text-muted hover:text-white transition-colors relative break-all sm:break-normal"
           data-cursor="text"
         >
           {personalInfo.email}

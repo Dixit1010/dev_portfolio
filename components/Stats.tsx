@@ -42,9 +42,9 @@ export default function Stats() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8 }}
-      className="bg-surface border-y border-border py-16 px-6"
+      className="bg-surface border-y border-border py-10 md:py-16 px-6"
     >
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto">
         {stats.map((stat, i) => (
           <StatCounter key={i} value={stat.value} label={stat.label} />
         ))}

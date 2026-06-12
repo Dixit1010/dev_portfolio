@@ -11,28 +11,33 @@ interface ProjectCardProps {
   onClick: (project: Project) => void;
 }
 
-const CARD_ACCENTS: Record<string, { glow: string; gradient: string }> = {
+const CARD_ACCENTS: Record<string, { glow: string; gradient: string; bar: string }> = {
   travsy: {
     glow: "0 8px 60px rgba(251,191,36,0.25), 0 0 0 1px rgba(251,191,36,0.2)",
     gradient: "linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(255,255,255,0.03) 40%, rgba(249,115,22,0.06) 100%)",
+    bar: "linear-gradient(90deg, rgba(251,191,36,0.8), rgba(249,115,22,0.4), transparent)",
   },
   chatify: {
     glow: "0 8px 60px rgba(96,165,250,0.25), 0 0 0 1px rgba(96,165,250,0.2)",
     gradient: "linear-gradient(135deg, rgba(96,165,250,0.1) 0%, rgba(255,255,255,0.03) 40%, rgba(6,182,212,0.06) 100%)",
+    bar: "linear-gradient(90deg, rgba(96,165,250,0.8), rgba(6,182,212,0.4), transparent)",
   },
   saarthi: {
     glow: "0 8px 60px rgba(52,211,153,0.25), 0 0 0 1px rgba(52,211,153,0.2)",
     gradient: "linear-gradient(135deg, rgba(52,211,153,0.1) 0%, rgba(255,255,255,0.03) 40%, rgba(16,185,129,0.06) 100%)",
+    bar: "linear-gradient(90deg, rgba(52,211,153,0.8), rgba(16,185,129,0.4), transparent)",
   },
   hirexx: {
     glow: "0 8px 60px rgba(167,139,250,0.25), 0 0 0 1px rgba(167,139,250,0.2)",
     gradient: "linear-gradient(135deg, rgba(167,139,250,0.1) 0%, rgba(255,255,255,0.03) 40%, rgba(139,92,246,0.06) 100%)",
+    bar: "linear-gradient(90deg, rgba(167,139,250,0.8), rgba(139,92,246,0.4), transparent)",
   },
 };
 
 const DEFAULT_ACCENT = {
   glow: "0 8px 40px rgba(255,255,255,0.08), 0 0 0 1px rgba(255,255,255,0.1)",
   gradient: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%)",
+  bar: "linear-gradient(90deg, rgba(255,255,255,0.3), transparent)",
 };
 
 interface Highlight {
@@ -410,7 +415,7 @@ export default function ProjectCard({ project, index, onClick }: ProjectCardProp
       whileHover={{ y: -6, scale: 1.01, boxShadow: accent.glow }}
       transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 20 }}
       onClick={() => onClick(project)}
-      className="w-full md:w-[42vw] max-w-[620px] h-auto md:h-[65vh] flex-shrink-0 bg-surface border border-border transition-colors duration-300 rounded-3xl overflow-hidden cursor-pointer flex flex-col md:flex-row group relative"
+      className="w-full md:w-[42vw] max-w-[620px] md:h-[65vh] flex-shrink-0 bg-surface border border-border transition-colors duration-300 rounded-3xl overflow-hidden cursor-pointer flex flex-col md:flex-row group relative"
       data-cursor="hover"
     >
       {/* Glossy gradient overlay — appears on hover */}
@@ -419,13 +424,16 @@ export default function ProjectCard({ project, index, onClick }: ProjectCardProp
         style={{ background: accent.gradient }}
       />
 
+      {/* Mobile accent bar — colored top stripe replacing visual panel on small screens */}
+      <div className="block md:hidden h-[3px] w-full flex-shrink-0" style={{ background: accent.bar }} />
+
       {/* Left Panel — Visual (enters viewport first as card scrolls in from right) */}
       <div className="hidden md:block w-[40%] border-r border-border bg-[#0a0a0a] relative overflow-hidden">
         {renderVisual()}
       </div>
 
       {/* Right Panel — Text */}
-      <div className="flex-1 p-6 md:p-10 flex flex-col justify-between">
+      <div className="flex-1 p-5 md:p-10 flex flex-col justify-between">
         <div className="flex justify-between items-center">
           <span className="font-mono text-xs text-text-muted">0{index + 1}</span>
           <Badge variant="outline">{project.year}</Badge>

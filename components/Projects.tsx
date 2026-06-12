@@ -104,12 +104,12 @@ export default function Projects() {
     <section id="projects" className="relative bg-background">
       
       {/* A. SECTION HEADER */}
-      <div className="px-6 md:px-12 pt-20 pb-8 relative z-10 bg-background">
+      <div className="px-6 md:px-12 pt-12 md:pt-20 pb-6 md:pb-8 relative z-10 bg-background">
         <SectionLabel number="01">Selected Work</SectionLabel>
-        <h2 className="text-5xl md:text-6xl font-light tracking-tight text-white mb-6">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-light tracking-tight text-white mb-4 md:mb-6">
           Things I&apos;ve Built
         </h2>
-        <p className="text-text-muted text-lg max-w-md">
+        <p className="text-text-muted text-base md:text-lg max-w-md">
           Full-stack products, ML systems, and everything in between.
         </p>
       </div>

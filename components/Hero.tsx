@@ -111,16 +111,16 @@ export default function Hero() {
         </div>
 
         <div className="flex flex-col relative z-20 text-center md:text-left">
-          <h1 
+          <h1
             ref={headline1Ref}
-            className="text-4xl md:text-7xl lg:text-9xl font-light tracking-tight text-white mb-2"
+            className="text-[2.2rem] sm:text-5xl md:text-7xl lg:text-9xl font-light tracking-tight text-white mb-2"
             style={{ perspective: "1000px" }}
           >
             {renderSplitText("Dixit Kumar")}
           </h1>
-          <h2 
+          <h2
             ref={headline2Ref}
-            className="text-3xl md:text-6xl lg:text-7xl font-light tracking-tight text-text-secondary"
+            className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-text-secondary"
             style={{ perspective: "1000px" }}
           >
             {renderSplitText("Software Engineer")}
@@ -149,7 +149,7 @@ export default function Hero() {
           </AnimatePresence>
         </div>
 
-        <div ref={ctaRef} className="mt-10 flex flex-col md:flex-row gap-3 md:gap-4 relative z-20 w-full max-w-xs md:max-w-none mx-auto md:mx-0">
+        <div ref={ctaRef} className="mt-10 flex flex-col sm:flex-row gap-3 md:gap-4 relative z-20 w-full max-w-sm sm:max-w-xs md:max-w-none mx-auto md:mx-0">
           <div className="opacity-0 w-full md:w-auto">
             <MagneticButton strength={0.2}>
               <button 

@@ -54,9 +54,9 @@ export default function Timeline() {
   }, { scope: containerRef });
 
   return (
-    <section id="timeline" className="py-32 px-6 md:px-12 max-w-5xl mx-auto border-t border-border">
+    <section id="timeline" className="py-16 md:py-32 px-6 md:px-12 max-w-5xl mx-auto border-t border-border">
       <SectionLabel number="04">Experience</SectionLabel>
-      <h2 className="text-5xl font-light tracking-tight text-white mt-6 mb-16 md:mb-24">
+      <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white mt-6 mb-10 md:mb-24">
         Career
       </h2>
 
@@ -85,9 +85,9 @@ export default function Timeline() {
 
               {/* CARD */}
               <div className="w-full md:w-[45%]">
-                <GlowCard className="p-8">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-xl font-medium text-white">{exp.company}</h3>
+                <GlowCard className="p-5 md:p-8">
+                  <div className="flex justify-between items-start gap-2">
+                    <h3 className="text-lg md:text-xl font-medium text-white">{exp.company}</h3>
                     <Badge variant="outline">{exp.type}</Badge>
                   </div>
                   <div className="text-text-muted text-sm mt-1">{exp.role}</div>
@@ -121,7 +121,7 @@ export default function Timeline() {
           </div>
           
           <div className="w-full md:w-[60%] z-10">
-            <GlowCard className="p-8 flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
+            <GlowCard className="p-5 md:p-8 flex flex-col md:flex-row gap-5 md:gap-8 items-center md:items-start text-center md:text-left">
               <div className="flex flex-col items-center justify-center shrink-0">
                 <div className="text-4xl font-light text-white mb-1">{education.cgpa.split('/')[0]}</div>
                 <span className="text-text-muted text-xs font-mono">/ 10 CGPA</span>

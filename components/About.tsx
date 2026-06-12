@@ -80,14 +80,14 @@ export default function About() {
     <section 
       id="about" 
       ref={containerRef}
-      className="min-h-screen py-32 px-6 md:px-12 max-w-6xl mx-auto flex flex-col justify-center"
+      className="py-16 md:py-32 px-6 md:px-12 max-w-6xl mx-auto flex flex-col justify-center"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start relative">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start relative">
         
         {/* LEFT COLUMN */}
         <div className="md:sticky md:top-32 order-2 md:order-1 flex flex-col">
           <SectionLabel number="02">About</SectionLabel>
-          <h2 className="text-5xl font-light tracking-tight text-white mt-6">
+          <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white mt-6">
             Who I Am
           </h2>
           <p className="text-text-muted text-lg leading-relaxed max-w-sm mt-6">
@@ -118,7 +118,7 @@ export default function About() {
           
           <div 
             ref={terminalRef}
-            className="bg-[#0d0d0d] border border-border rounded-2xl overflow-hidden min-h-[350px] md:min-h-[520px] relative shadow-2xl"
+            className="bg-[#0d0d0d] border border-border rounded-2xl overflow-hidden min-h-[300px] md:min-h-[520px] relative shadow-2xl"
           >
             {/* TERMINAL TITLEBAR */}
             <div className="bg-[#161616] px-4 py-3 flex items-center border-b border-border relative z-10">

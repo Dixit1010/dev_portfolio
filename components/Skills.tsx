@@ -33,15 +33,15 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" className="min-h-screen py-32 px-6 md:px-12 max-w-6xl mx-auto flex flex-col justify-center border-t border-border">
+    <section id="skills" className="py-16 md:py-32 px-6 md:px-12 max-w-6xl mx-auto flex flex-col justify-center border-t border-border">
       <SectionLabel number="03">Expertise</SectionLabel>
-      <h2 className="text-5xl font-light tracking-tight text-white mt-6 mb-16">
+      <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white mt-6 mb-10 md:mb-16">
         What I Work With
       </h2>
 
-      <div className="flex flex-col md:flex-row gap-12 items-center">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
         {/* Canvas Wrapper */}
-        <div className="w-full h-[400px] md:h-[600px] md:w-2/3 relative">
+        <div className="w-full h-[300px] sm:h-[380px] md:h-[600px] md:w-2/3 relative">
           {mounted && isDesktop ? (
             <Canvas camera={{ position: [0, 0, 9], fov: 60 }}>
               <SkillCloud skills={allSkills} />
@@ -70,35 +70,21 @@ export default function Skills() {
         </div>
 
         {/* Legend */}
-        <div className="w-full md:w-1/3 flex flex-row md:flex-col overflow-x-auto md:overflow-visible gap-4 md:gap-6 pb-4 md:pb-0 snap-x hide-scrollbar">
-          <div className="flex-shrink-0 min-w-[220px] md:min-w-0 snap-center flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
-            <div className="w-3 h-3 rounded-full bg-[#60a5fa] flex-shrink-0" />
-            <div>
-              <div className="text-white text-sm">Web & Full Stack</div>
-              <div className="text-text-muted text-xs font-mono mt-1">{skills.web.length} Skills</div>
+        <div className="w-full md:w-1/3 grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-6">
+          {[
+            { color: "#60a5fa", label: "Web & Full Stack", count: skills.web.length },
+            { color: "#a78bfa", label: "Low Latency Systems", count: skills.systems.length },
+            { color: "#34d399", label: "Machine Learning", count: skills.ml.length },
+            { color: "#fb923c", label: "Tools & Cloud", count: skills.tools.length },
+          ].map((item) => (
+            <div key={item.label} className="flex items-center gap-3 p-3 md:p-4 rounded-xl border border-border bg-surface">
+              <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full flex-shrink-0" style={{ background: item.color }} />
+              <div className="min-w-0">
+                <div className="text-white text-xs md:text-sm truncate">{item.label}</div>
+                <div className="text-text-muted text-[10px] md:text-xs font-mono mt-0.5">{item.count} Skills</div>
+              </div>
             </div>
-          </div>
-          <div className="flex-shrink-0 min-w-[220px] md:min-w-0 snap-center flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
-            <div className="w-3 h-3 rounded-full bg-[#a78bfa] flex-shrink-0" />
-            <div>
-              <div className="text-white text-sm">Low Latency Systems</div>
-              <div className="text-text-muted text-xs font-mono mt-1">{skills.systems.length} Skills</div>
-            </div>
-          </div>
-          <div className="flex-shrink-0 min-w-[220px] md:min-w-0 snap-center flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
-            <div className="w-3 h-3 rounded-full bg-[#34d399] flex-shrink-0" />
-            <div>
-              <div className="text-white text-sm">Machine Learning</div>
-              <div className="text-text-muted text-xs font-mono mt-1">{skills.ml.length} Skills</div>
-            </div>
-          </div>
-          <div className="flex-shrink-0 min-w-[220px] md:min-w-0 snap-center flex items-center gap-4 p-4 rounded-xl border border-border bg-surface">
-            <div className="w-3 h-3 rounded-full bg-[#fb923c] flex-shrink-0" />
-            <div>
-              <div className="text-white text-sm">Tools & Cloud</div>
-              <div className="text-text-muted text-xs font-mono mt-1">{skills.tools.length} Skills</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
