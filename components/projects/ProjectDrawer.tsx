@@ -2,9 +2,15 @@
 
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import type { Project } from "@/data/content";
 import Badge from "../ui/Badge";
 import { useLenisContext } from "@/providers/LenisProvider";
+
+const PREVIEW_IMAGES: Record<string, string> = {
+  travsy: "/travsy-preview.png",
+  saarthi: "/saarthi-preview.png",
+};
 
 interface ProjectDrawerProps {
   project: Project | null;
@@ -69,6 +75,24 @@ export default function ProjectDrawer({ project, isOpen, onClose }: ProjectDrawe
                     ))}
                   </div>
                 </div>
+
+                {PREVIEW_IMAGES[project.id] && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                    className="relative w-full h-[220px] md:h-[380px] rounded-2xl overflow-hidden border border-border"
+                  >
+                    <Image
+                      src={PREVIEW_IMAGES[project.id]}
+                      alt={`${project.title} preview`}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 800px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111]/70 via-transparent to-transparent" />
+                  </motion.div>
+                )}
 
                 <p className="text-text-secondary leading-relaxed text-lg whitespace-pre-wrap">
                   {project.longDescription}

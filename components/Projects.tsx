@@ -26,6 +26,8 @@ export default function Projects() {
   const tier3 = projects.filter((p) => p.tier === 3);
 
   const [progress, setProgress] = useState(0);
+  // null = not yet measured; avoids GSAP initialising with wrong height then reinitialising mid-scroll
+  const [wrapperHeight, setWrapperHeight] = useState<string | null>(null);
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
@@ -34,47 +36,59 @@ export default function Projects() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useGSAP(() => {
+  // Measure track width after paint — two rAFs guarantee layout is complete
+  useEffect(() => {
     if (!isDesktop) return;
-    
+    const track = trackRef.current;
+    if (!track) return;
+
+    const measure = () => {
+      const scrollDistance = track.scrollWidth - window.innerWidth;
+      setWrapperHeight(`${window.innerHeight + scrollDistance}px`);
+    };
+
+    requestAnimationFrame(() => requestAnimationFrame(measure));
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [isDesktop]);
+
+  useGSAP(() => {
+    // Wait until real height is known — prevents double-init bug
+    if (!isDesktop || !wrapperHeight) return;
+
     gsap.registerPlugin(ScrollTrigger);
-    
+
     const track = trackRef.current;
     const wrapper = pinWrapper.current;
-    const container = pinContainer.current;
-    
-    if (!track || !wrapper || !container) return;
+
+    if (!track || !wrapper) return;
 
     gsap.to(track, {
       x: () => -(track.scrollWidth - window.innerWidth) + "px",
       ease: "none",
       scrollTrigger: {
         trigger: wrapper,
-        pin: container,
-        scrub: 1,
+        // scrub: true = instant sync with Lenis scroll position.
+        // Lenis already provides easing so no second layer of smoothing is needed.
+        scrub: true,
         start: "top top",
-        end: () => `+=${track.scrollWidth}`,
+        end: () => `+=${track.scrollWidth - window.innerWidth}`,
         invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          setProgress(self.progress);
-        }
+        onUpdate: (self) => setProgress(self.progress),
       }
     });
 
     const cards = document.querySelectorAll(".tier2-card");
     cards.forEach((card, i) => {
-      gsap.fromTo(card, 
+      gsap.fromTo(card,
         { opacity: 0, y: 40 },
-        { 
+        {
           opacity: 1, y: 0, duration: 0.8, delay: i * 0.1,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-          }
+          scrollTrigger: { trigger: card, start: "top 85%" }
         }
       );
     });
-  }, { dependencies: [isDesktop] });
+  }, { dependencies: [isDesktop, wrapperHeight] });
 
   const openDrawer = (project: Project) => {
     setSelectedProject(project);
@@ -87,10 +101,10 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="relative bg-background overflow-hidden">
+    <section id="projects" className="relative bg-background">
       
       {/* A. SECTION HEADER */}
-      <div className="px-6 md:px-12 pt-24 pb-12 relative z-10 bg-background">
+      <div className="px-6 md:px-12 pt-20 pb-8 relative z-10 bg-background">
         <SectionLabel number="01">Selected Work</SectionLabel>
         <h2 className="text-5xl md:text-6xl font-light tracking-tight text-white mb-6">
           Things I&apos;ve Built
@@ -102,9 +116,9 @@ export default function Projects() {
 
       {/* B. HORIZONTAL PINNED SCROLL */}
       {isDesktop ? (
-        <div ref={pinWrapper} className="relative h-[300vh]">
+        <div ref={pinWrapper} className="relative" style={{ height: wrapperHeight ?? "100vh" }}>
           <div ref={pinContainer} className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center bg-background">
-            <div ref={trackRef} className="flex w-fit gap-6 md:gap-12 px-[10vw] will-change-transform items-center h-full">
+            <div ref={trackRef} className="flex w-fit gap-6 md:gap-8 px-[8vw] will-change-transform items-center h-full">
               {tier1.map((project, idx) => (
                 <ProjectCard 
                   key={project.id} 

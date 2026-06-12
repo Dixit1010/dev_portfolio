@@ -129,7 +129,7 @@ export default function Contact() {
       <div className="mt-12">
         <Badge variant="outline">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-[pulse_2s_ease-in-out_infinite] mr-2 inline-block" />
-          Available for full-time roles
+          Available for full-time roles & Freelancing
         </Badge>
       </div>
     </section>
