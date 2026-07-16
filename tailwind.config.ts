@@ -30,6 +30,7 @@ const config: Config = {
       animation: {
         "cursor-blink": "blink 1s step-end infinite",
         float: "float 6s ease-in-out infinite",
+        marquee: "marquee 36s linear infinite",
       },
       keyframes: {
         blink: {
@@ -39,6 +40,10 @@ const config: Config = {
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-20px)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },

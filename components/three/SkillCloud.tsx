@@ -4,13 +4,15 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
+import { skillIcons } from "@/data/skillIcons";
 
 
 const CATEGORY_COLORS = {
   web: "#60a5fa",
   systems: "#a78bfa",
   ml: "#34d399",
-  tools: "#fb923c"
+  tools: "#fb923c",
+  cs: "#f472b6"
 };
 
 export default function SkillCloud({ skills }: { skills: {name: string, category: keyof typeof CATEGORY_COLORS}[] }) {
@@ -52,22 +54,26 @@ export default function SkillCloud({ skills }: { skills: {name: string, category
         onPointerEnter={() => (hoverRef.current = true)}
         onPointerLeave={() => (hoverRef.current = false)}
       >
-        {skillItems.map((item, i) => (
-          <Html
-            key={i}
-            position={item.position}
-            center
-            distanceFactor={8}
-            className="transition-all duration-300 hover:scale-[1.4] hover:z-50"
-          >
-            <span 
-              className="font-mono text-xs cursor-pointer whitespace-nowrap px-2 py-1 rounded-md bg-background/50 backdrop-blur-sm border border-transparent hover:border-white/20 transition-all duration-300"
-              style={{ color: item.color }}
+        {skillItems.map((item, i) => {
+          const Icon = skillIcons[item.name];
+          return (
+            <Html
+              key={i}
+              position={item.position}
+              center
+              distanceFactor={8}
+              className="transition-all duration-300 hover:scale-[1.4] hover:z-50"
             >
-              {item.name}
-            </span>
-          </Html>
-        ))}
+              <span
+                className="flex items-center gap-1.5 font-mono text-xs cursor-pointer whitespace-nowrap px-2 py-1 rounded-md bg-background/50 backdrop-blur-sm border border-transparent hover:border-white/20 transition-all duration-300"
+                style={{ color: item.color }}
+              >
+                {Icon && <Icon className="shrink-0" size={13} />}
+                {item.name}
+              </span>
+            </Html>
+          );
+        })}
       </group>
     </>
   );

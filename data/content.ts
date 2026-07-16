@@ -24,6 +24,7 @@ export const personalInfo = {
   github: "https://github.com/Dixit1010",
   linkedin: "https://www.linkedin.com/in/dixitkum",
   portfolio: "https://portfoliodixitt.netlify.app",
+  medium: "https://medium.com/@dixitkumar300",
 };
 
 export const stats = [
@@ -187,10 +188,11 @@ export const experience = [
 ];
 
 export const skills = {
-  web: ["React.js", "Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB", "Firebase", "Tailwind CSS", "Framer Motion"],
+  web: ["React.js", "Next.js", "TypeScript", "JavaScript", "Node.js", "Express.js", "MongoDB", "Mongoose", "Firebase", "Tailwind CSS", "Framer Motion", "TanStack React Query", "REST APIs", "JWT", "Zod"],
   systems: ["C", "C++", "C#", ".NET", "WPF", "MVVM", "RTOS", "UART", "RL78"],
   ml: ["Python", "PyTorch", "Scikit-learn", "Flask", "AWS SageMaker", "Pandas"],
-  tools: ["Git", "Postman", "Vercel", "Render", "Cloudinary", "MongoDB Atlas"],
+  tools: ["Git", "GitHub", "Postman", "Vercel", "Render", "Cloudinary", "MongoDB Atlas"],
+  cs: ["Operating Systems", "Data Structures & Algorithms", "OOPS"],
 };
 
 export const education = {

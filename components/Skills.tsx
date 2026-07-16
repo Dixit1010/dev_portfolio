@@ -5,15 +5,18 @@ import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { skills } from "@/data/content";
+import { skillIcons } from "@/data/skillIcons";
 import SectionLabel from "./ui/SectionLabel";
 
 const SkillCloud = dynamic(() => import("./three/SkillCloud"), { ssr: false });
 
+type SkillCategory = "web" | "systems" | "ml" | "tools" | "cs";
+
 const flattenSkills = () => {
-  const flattened: { name: string; category: "web" | "systems" | "ml" | "tools" }[] = [];
+  const flattened: { name: string; category: SkillCategory }[] = [];
   Object.entries(skills).forEach(([cat, list]) => {
     list.forEach(name => {
-      flattened.push({ name, category: cat as "web" | "systems" | "ml" | "tools" });
+      flattened.push({ name, category: cat as SkillCategory });
     });
   });
   return flattened;
@@ -48,23 +51,28 @@ export default function Skills() {
             </Canvas>
           ) : (
             <div className="flex flex-wrap gap-3 h-full content-center">
-              {allSkills.map((s, i) => (
-                <motion.span 
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.04 }}
-                  className="font-mono text-xs px-3 py-1.5 rounded-full border border-border bg-surface"
-                  style={{ 
-                    color: s.category === 'web' ? '#60a5fa' : 
-                           s.category === 'systems' ? '#a78bfa' :
-                           s.category === 'ml' ? '#34d399' : '#fb923c'
-                  }}
-                >
-                  {s.name}
-                </motion.span>
-              ))}
+              {allSkills.map((s, i) => {
+                const Icon = skillIcons[s.name];
+                return (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.04 }}
+                    className="flex items-center gap-1.5 font-mono text-xs px-3 py-1.5 rounded-full border border-border bg-surface"
+                    style={{
+                      color: s.category === 'web' ? '#60a5fa' :
+                             s.category === 'systems' ? '#a78bfa' :
+                             s.category === 'ml' ? '#34d399' :
+                             s.category === 'cs' ? '#f472b6' : '#fb923c'
+                    }}
+                  >
+                    {Icon && <Icon size={14} className="shrink-0" />}
+                    {s.name}
+                  </motion.span>
+                );
+              })}
             </div>
           )}
         </div>
@@ -76,6 +84,7 @@ export default function Skills() {
             { color: "#a78bfa", label: "Low Latency Systems", count: skills.systems.length },
             { color: "#34d399", label: "Machine Learning", count: skills.ml.length },
             { color: "#fb923c", label: "Tools & Cloud", count: skills.tools.length },
+            { color: "#f472b6", label: "Core CS", count: skills.cs.length },
           ].map((item) => (
             <div key={item.label} className="flex items-center gap-3 p-3 md:p-4 rounded-xl border border-border bg-surface">
               <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full flex-shrink-0" style={{ background: item.color }} />
