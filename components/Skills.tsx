@@ -42,40 +42,43 @@ export default function Skills() {
         What I Work With
       </h2>
 
-      <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
-        {/* Canvas Wrapper */}
-        <div className="w-full h-[300px] sm:h-[380px] md:h-[600px] md:w-2/3 relative">
-          {mounted && isDesktop ? (
+      <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-center">
+        {/* Desktop Canvas */}
+        {mounted && isDesktop && (
+          <div className="hidden md:block w-full md:w-2/3 h-[600px] relative">
             <Canvas camera={{ position: [0, 0, 9], fov: 60 }}>
               <SkillCloud skills={allSkills} />
             </Canvas>
-          ) : (
-            <div className="flex flex-wrap gap-3 h-full content-center">
-              {allSkills.map((s, i) => {
-                const Icon = skillIcons[s.name];
-                return (
-                  <motion.span
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.04 }}
-                    className="flex items-center gap-1.5 font-mono text-xs px-3 py-1.5 rounded-full border border-border bg-surface"
-                    style={{
-                      color: s.category === 'web' ? '#60a5fa' :
-                             s.category === 'systems' ? '#a78bfa' :
-                             s.category === 'ml' ? '#34d399' :
-                             s.category === 'cs' ? '#f472b6' : '#fb923c'
-                    }}
-                  >
-                    {Icon && <Icon size={14} className="shrink-0" />}
-                    {s.name}
-                  </motion.span>
-                );
-              })}
-            </div>
-          )}
-        </div>
+          </div>
+        )}
+
+        {/* Mobile Tag List */}
+        {mounted && !isDesktop && (
+          <div className="flex flex-wrap gap-3 w-full">
+            {allSkills.map((s, i) => {
+              const Icon = skillIcons[s.name];
+              return (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.04 }}
+                  className="flex items-center gap-1.5 font-mono text-xs px-3 py-1.5 rounded-full border border-border bg-surface"
+                  style={{
+                    color: s.category === 'web' ? '#60a5fa' :
+                           s.category === 'systems' ? '#a78bfa' :
+                           s.category === 'ml' ? '#34d399' :
+                           s.category === 'cs' ? '#f472b6' : '#fb923c'
+                  }}
+                >
+                  {Icon && <Icon size={14} className="shrink-0" />}
+                  {s.name}
+                </motion.span>
+              );
+            })}
+          </div>
+        )}
 
         {/* Legend */}
         <div className="w-full md:w-1/3 grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-6">

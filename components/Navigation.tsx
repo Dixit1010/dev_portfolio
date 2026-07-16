@@ -99,7 +99,8 @@ export default function Navigation() {
   const handleNavClick = (id: string) => {
     setMenuOpen(false);
     if (lenis) {
-      lenis.scrollTo(`#${id}`, { offset: -80 });
+      lenis.start();
+      lenis.scrollTo(`#${id}`, { offset: -80, force: true });
     } else {
       const element = document.getElementById(id);
       if (element) {
